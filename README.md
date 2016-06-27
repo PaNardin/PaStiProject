@@ -1,14 +1,14 @@
 # PaStiProject
 
-# Prerequisite:
+## Prerequisite:
 Add Numpy package:
 sudo apt-get install python-numpy
 
-# Information:
+## Information:
 
 The aim of this project is to compare the diversity in the Uefa 2016 soccer teams using the well-known "Scrabble" points.
 
-# Authors:
+## Authors:
 
 Thales communications and Security TAI students: Nicolas TASTEVIN, Pierre CAUSSANEL and Pierre-Alexis NARDIN
 
