@@ -185,7 +185,7 @@ Scrabble_score = {
 
 }
 
-def histogramme(result):
+def histogramme(result,name):
     plt.figure(figsize=(20,10),dpi=150)
     x = np.array([])    
     y = np.array([])
@@ -199,32 +199,41 @@ def histogramme(result):
     print(y)
     plt.xticks(bins+0.3/2,x,rotation = 'vertical')
     plt.bar(bins,y,0.3,color = 'r')
-    plt.savefig('histogramme')
+    plt.savefig('histogramme_'+name)
     plt.close()
 
-final_result= {}
 
-for filename in os.listdir('PASTI'):
-	country = filename[:len(filename)-4]
-	with open("PASTI/"+filename, 'rb') as csvfile:
-		spamreader = csv.reader(csvfile, delimiter=' ')
-		result = {}
-		
-		for name in spamreader:
-			score = 0
-			if (len(name[1]) != 0):
-				for letter in range(len(name[1])):
-					if name[1][letter].upper() in Scrabble_score[country]:
-						score += Scrabble_score[country][name[1][letter].upper()]
-					else:
-						print("ERROR:"+name[1][letter].upper()+" "+country)
-				result[name[1].upper()] = float(score)/len(name[1])
-		
-		final_result[country] = np.std(result.values())
+def ratio_surname(Scrabble_score):
+    final_result_std= {}
+    final_result_mean={}
+    
+    for filename in os.listdir('PASTI'):
+    	country = filename[:len(filename)-4]
+    	with open("PASTI/"+filename, 'rb') as csvfile:
+    		spamreader = csv.reader(csvfile, delimiter=' ')
+    		result = {}
+    		
+    		for name in spamreader:
+    			score = 0
+    			if (len(name[1]) != 0):
+    				for letter in range(len(name[1])):
+    					if name[1][letter].upper() in Scrabble_score[country]:
+    						score += Scrabble_score[country][name[1][letter].upper()]
+    					else:
+    						print("ERROR:"+name[1][letter].upper()+" "+country)
+    				result[name[1].upper()] = float(score)/len(name[1])
+    		
+    		final_result_std[country] = np.std(result.values())
+    		final_result_mean[country] = np.mean(result.values())            
+    # Sort the dictionary /!\ cast it into a list
+    final_result_std = sorted(final_result_std.items(), key=operator.itemgetter(1))  
+    final_result_mean = sorted(final_result_mean.items(), key=operator.itemgetter(1))
+    return final_result_std,final_result_mean
   
 
 
-# Sort the dictionary /!\ cast it into a list
-final_result = sorted(final_result.items(), key=operator.itemgetter(1))
-print(final_result)
-histogramme(final_result)
+
+
+final_result_std,final_result_mean = ratio_surname(Scrabble_score)
+histogramme(final_result_std,"std")
+histogramme(final_result_mean,"mean")
