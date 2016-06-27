@@ -1,7 +1,8 @@
 import os
 import csv
-import numpy
+import numpy as np
 import operator
+import matplotlib.pyplot as plt
 
 Scrabble_score = {
 'France' : {"E":1, "A":1, "I":1, "N":1, "O":1, "R":1, "S":1, "T":1, "U":1, "L":1,
@@ -184,6 +185,23 @@ Scrabble_score = {
 
 }
 
+def histogramme(result):
+    plt.figure(figsize=(20,10),dpi=150)
+    x = np.array([])    
+    y = np.array([])
+    for i in result:
+        x = np.append(x,i[0])
+        y = np.append(y,i[1])
+    
+    bins = np.array([i for i in range(0,23,1)])
+    print(bins)
+    print(x)
+    print(y)
+    plt.xticks(bins+0.3/2,x,rotation = 'vertical')
+    plt.bar(bins,y,0.3,color = 'r')
+    plt.savefig('histogramme')
+    plt.close()
+
 final_result= {}
 
 for filename in os.listdir('PASTI'):
@@ -199,11 +217,14 @@ for filename in os.listdir('PASTI'):
 					if name[1][letter].upper() in Scrabble_score[country]:
 						score += Scrabble_score[country][name[1][letter].upper()]
 					else:
-						print "ERROR:"+name[1][letter].upper()+" "+country
+						print("ERROR:"+name[1][letter].upper()+" "+country)
 				result[name[1].upper()] = float(score)/len(name[1])
 		
-		final_result[country] = numpy.std(result.values())
+		final_result[country] = np.std(result.values())
+  
+
 
 # Sort the dictionary /!\ cast it into a list
 final_result = sorted(final_result.items(), key=operator.itemgetter(1))
-print final_result
+print(final_result)
+histogramme(final_result)
