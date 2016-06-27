@@ -2,8 +2,8 @@
 
 ### Prerequisite:
 Add Numpy package:
-sudo apt-get install python-numpy
-sudo apt-get install python-matplotlib
+*sudo apt-get install python-numpy
+*sudo apt-get install python-matplotlib
 
 ### Information:
 
