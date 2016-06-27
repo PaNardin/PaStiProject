@@ -1,4 +1,4 @@
 # PaStiProject
 
-# Add Numpy package:
-# sudo apt-get install python-numpy
+# # #Add Numpy package:
+# # #sudo apt-get install python-numpy
