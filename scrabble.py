@@ -121,6 +121,67 @@ Scrabble_score = {
 "C":8, "X":8,
 "Z":10, "Q":0, "W":0},
 
+# Anglais
+'PaysDeGalles' : {"E":1, "A":1, "I":1, "N":1, "O":1, "S":1, "R":1, "T":1, "U":1, "L":1,
+"D":2, "G":2,
+"B":3, "C":3, "M":3, "P":3,
+"F":4, "H":4, "V":4, "W":4, "Y":4, 
+"K":5,
+"J":8, "X":8,
+"Q":10, "Z":10},
+
+# Ajout K
+'Roumanie' : {"A":1, "I":1, "E":1, "R":1, "T":1, "N":1, "U":1, "C":1, "O":1, "S":1, "L":1,
+"D":2, "P":2,
+"M":4,
+"F":8, "V":8, 
+"B":9, "G":9,
+"H":10, "J":10, "X":10, "Z":10, "K":10},
+
+'Pologne' : {"A":1, "I":1, "E":1, "O":1, "N":1, "Z":1, "R":1, "S":1, "W":1,
+"Y":2, "C":2, "D":2, "K":2, "L":2, "M":2, "P":2, "T":2,
+"B":3, "G":3, "H":3, "J":3, "U":3,
+"F":5},
+
+'Portugal' : {"A":1, "I":1, "O":1, "S":1, "U":1, "M":1, "R":1, "E":1, "T":1,
+"C":2, "P":2, "D":2, "L":2,
+"N":3, "B":3,
+"F":4, "G":4, "H":4, "V":4,
+"J":5,
+"Q":6,
+"X":8, "Z":8},
+
+'RepTcheque' : {"O":1, "A":1, "E":1, "N":1, "I":1, "S":1, "T":1, "V":1, "D":1, "K":1, "L":1, "P":1, "R":1,
+"C":2, "H":2, "M":2, "U":2, "J":2, "Y":2, "Z":2,
+"B":3,
+"F":5, "G":5,
+"X":10},
+
+'Russie' : {"O":1, "A":1, "E":1, "N":1, "I":1, "R":1, "S":1, "T":1, "V":1,
+"K":2, "M":2, "U":2, "L":2, "D":2,
+"G":3, "B":3,
+"Y":4,
+"H":5, "Z":5, "C":5,
+"F":10},
+
+# Ajout Y W
+'Slovaquie' : {"E":1, "A":1, "I":1, "O":1, "N":1, "R":1, "S":1, "J":1, "L":1, "T":1,
+"D":2, "V":2,
+"K":3, "M":3, "P":3, "U":3,
+"B":4, "G":4, "Z":4,
+"H":5, "Y":5, 
+"C":8,
+"F":10, "W":10},
+
+# Ajout Y W
+'Ukraine' : {"O":1, "A":1, "Y":1, "N":1, "V":1, "E":1, "I":1, "T":1,
+"K":2, "R":2, "S":2,
+"M":3, "U":3, "D":3, "L":3,
+"P":4, "Z":4,
+"X":5, "B":5, "H":5, 
+"C":8,
+"F":10, "G":10}
+
 }
 
 final_result= {}
@@ -138,7 +199,7 @@ for filename in os.listdir('PASTI'):
 					if name[1][letter].upper() in Scrabble_score[country]:
 						score += Scrabble_score[country][name[1][letter].upper()]
 					else:
-						print "ERROR:"+name[1][letter].upper()
+						print "ERROR:"+name[1][letter].upper()+" "+country
 				result[name[1].upper()] = float(score)/len(name[1])
 		
 		final_result[country] = numpy.std(result.values())
