@@ -227,9 +227,11 @@ def ratio(Scrabble_score,case):
     			score = 0
     			if (len(name[arg]) != 0):
     				for letter in range(len(name[arg])):
+
     					if name[arg][letter].upper() in Scrabble_score[country]:
     						score += Scrabble_score[country][name[arg][letter].upper()]
     					else:
+
     						print("ERROR:"+name[arg][letter].upper()+" "+country)
     				result[name[arg].upper()] = float(score)/len(name[arg])
     		
@@ -242,7 +244,7 @@ def ratio(Scrabble_score,case):
   
 
 
-case = raw_input('elect the case: surname or firstname or totalname: ')
+case = raw_input('Pierre la Merguez elects the case(Pas tchatcheur du tout ): surname or firstname or totalname: ')
 
 final_result_std,final_result_mean = ratio(Scrabble_score,case)
 histogramme(final_result_std,"std")
