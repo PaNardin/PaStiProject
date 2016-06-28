@@ -203,25 +203,35 @@ def histogramme(result,name):
     plt.close()
 
 
-def ratio_surname(Scrabble_score):
+def ratio(Scrabble_score,case):
     final_result_std= {}
     final_result_mean={}
-    
+
+    if(case=="surname"):
+	delimiter=' '
+	arg=1
+    elif(case=="firstname"):
+	delimiter=' '
+	arg=0
+    elif(case=="totalname"):
+	delimiter=':'
+	arg=0
+
     for filename in os.listdir('PASTI'):
     	country = filename[:len(filename)-4]
     	with open("PASTI/"+filename, 'rb') as csvfile:
-    		spamreader = csv.reader(csvfile, delimiter=' ')
+    		spamreader = csv.reader(csvfile, delimiter=delimiter)
     		result = {}
     		
     		for name in spamreader:
     			score = 0
-    			if (len(name[1]) != 0):
-    				for letter in range(len(name[1])):
-    					if name[1][letter].upper() in Scrabble_score[country]:
-    						score += Scrabble_score[country][name[1][letter].upper()]
+    			if (len(name[arg]) != 0):
+    				for letter in range(len(name[arg])):
+    					if name[arg][letter].upper() in Scrabble_score[country]:
+    						score += Scrabble_score[country][name[arg][letter].upper()]
     					else:
-    						print("ERROR:"+name[1][letter].upper()+" "+country)
-    				result[name[1].upper()] = float(score)/len(name[1])
+    						print("ERROR:"+name[arg][letter].upper()+" "+country)
+    				result[name[arg].upper()] = float(score)/len(name[arg])
     		
     		final_result_std[country] = np.std(result.values())
     		final_result_mean[country] = np.mean(result.values())            
@@ -232,8 +242,9 @@ def ratio_surname(Scrabble_score):
   
 
 
+case = raw_input('elect the case: surname or firstname or totalname: ')
 
-
-final_result_std,final_result_mean = ratio_surname(Scrabble_score)
+final_result_std,final_result_mean = ratio(Scrabble_score,case)
 histogramme(final_result_std,"std")
 histogramme(final_result_mean,"mean")
+
