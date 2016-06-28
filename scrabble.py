@@ -194,7 +194,7 @@ def histogramme(result,name):
         y = np.append(y,i[1])
     
     bins = np.array([i for i in range(0,23,1)])
-    print(bins)
+    print(name)
     print(x)
     print(y)
     plt.xticks(bins+0.3/2,x,rotation = 'vertical')
