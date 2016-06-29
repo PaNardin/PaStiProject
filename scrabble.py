@@ -100,6 +100,14 @@ Scrabble_score = {
     "P":8,
     "X":10},
 
+    # 'Islande' : {"E":1, "A":1, "I":1, "N":1, "O":1, "S":1, "R":1, "T":1, "U":1, "L":1,
+    # "D":2, "G":2,
+    # "B":3, "C":3, "M":3, "P":3,
+    # "F":4, "H":4, "V":4, "W":4, "Y":4, 
+    # "K":5,
+    # "J":8, "X":8,
+    # "Q":10, "Z":10},
+
     # Ajout de W Y
     'Italie' : {"O":1, "A":1, "I":1, "E":1,
     "C":2, "R":2, "S":2, "T":2,
@@ -197,7 +205,7 @@ def histogramme(result,name):
         x = np.append(x,i[0])
         y = np.append(y,i[1])
 
-    bins = np.array([i for i in range(0,23,1)])
+    bins = np.array([i for i in range(0,8,1)])
     print(name)
     print(x)
     print(y)
