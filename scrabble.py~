@@ -257,8 +257,8 @@ def ratio(Scrabble_score,case):
                 
                 final_result_std[country] = np.std(result.values())
                 final_result_mean[country] = np.mean(result.values())
-		print(country,np.argmax(result_raw),np.max(result_raw))
-		
+		print(np.max(result_raw))
+		print(np.argmax(result_raw))
 
     elif(case=="totalname"):
         for filename in os.listdir('PASTI'):
