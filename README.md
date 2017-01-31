@@ -1,17 +1,17 @@
 # PaStiProject
 
+### Information:
+
+The aim of this project is to compare the diversity in the Uefa 2016 soccer teams using the well-known "Scrabble" points.
+
 ### Prerequisite:
 Add Numpy package:
 *sudo apt-get install python-numpy
 *sudo apt-get install python-matplotlib
 
-### Information:
-
-The aim of this project is to compare the diversity in the Uefa 2016 soccer teams using the well-known "Scrabble" points.
-
 ### Authors:
 
-Thales communications and Security TAI students: Nicolas TASTEVIN, Pierre CAUSSANEL and Pierre-Alexis NARDIN
+Thales communications and Security TAI interns: Nicolas TASTEVIN, Pierre CAUSSANEL and Zemelusa
 
 ### References:
 
