@@ -5,9 +5,9 @@
 The aim of this project is to compare the diversity in the Uefa 2016 soccer teams using the well-known "Scrabble" points.
 
 ### Prerequisite:
-Add Numpy package:
-*sudo apt-get install python-numpy
-*sudo apt-get install python-matplotlib
+sudo apt-get install python-numpy
+
+sudo apt-get install python-matplotlib
 
 ### Authors:
 
